@@ -3,21 +3,23 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Catalogo catalogo = new Catalogo();
+        Disco disco = new Disco();
         Scanner scanner = new Scanner(System.in);
         boolean executando = true;
 
         while (executando) {
             System.out.println("\n----- MENU -----");
-            System.out.println("1-     Adicionar Artista");
-            System.out.println("2-     Adicionar Disco");
-            System.out.println("3-     Adicionar Faixa a um Disco");
-            System.out.println("4-     Listar Discos no Catálogo");
-            System.out.println("5-     Editar Disco");
-            System.out.println("6-     Remover Disco");
-            System.out.println("7-     Editar Artista");
-            System.out.println("8-     Remover Artista");
-            System.out.println("9-     Mostrar Artistas");
-            System.out.println("10-     Sair");
+            System.out.println("1-     Adicionar artista");
+            System.out.println("2-     Adicionar disco");
+            System.out.println("3-     Adicionar faixa a um Disco");
+            System.out.println("4-     Remover faixa de um disco");
+            System.out.println("5-     Listar discos no catálogo");
+            System.out.println("6-     Editar disco");
+            System.out.println("7-     Remover disco");
+            System.out.println("8-     Editar artista");
+            System.out.println("9-     Remover artista");
+            System.out.println("10-    Mostrar artistas");
+            System.out.println("11-    Sair");
             System.out.print("Escolha uma opção: ");
 
             int opcao = scanner.nextInt();
@@ -27,7 +29,7 @@ public class Main {
                 case 1:
                     System.out.print("Digite o nome do artista: ");
                     String nomeArtista = scanner.nextLine();
-                    System.out.print("Digite os gêneros do artista: ");
+                    System.out.print("Digite o(s) gênero(s) do artista: ");
                     String generoArtista = scanner.nextLine();
                     Artista novoArtista = new Artista(nomeArtista, generoArtista);
                     catalogo.adicionarArtista(novoArtista);
@@ -69,12 +71,26 @@ public class Main {
                         System.out.println("Disco não encontrado no catálogo.");
                     }
                     break;
-
                 case 4:
-                    catalogo.mostrarDiscos();
+                    System.out.print("Digite o nome do disco para adicionar faixas: ");
+                    String discoR = scanner.nextLine();
+                    Disco discoA = catalogo.acharDisco(discoR);
+
+                    if (discoA != null) {
+                        System.out.print("Digite o nome da faixa a ser removida: ");
+                        String faixaR = scanner.nextLine();
+                        discoA.removerFaixa(faixaR);
+                        System.out.println("Faixa removida: " + faixaR);
+                    } else {
+                        System.out.println("Disco não encontrado no catálogo.");
+                    }
                     break;
 
                 case 5:
+                    catalogo.mostrarDiscos();
+                    break;
+
+                case 6:
                     System.out.print("Digite o nome do disco a ser editado: ");
                     String discoParaEditar = scanner.nextLine();
                     Disco discoEdicao = catalogo.acharDisco(discoParaEditar);
@@ -93,13 +109,13 @@ public class Main {
                     }
                     break;
 
-                case 6:
+                case 7:
                     System.out.print("Digite o nome do disco a ser removido: ");
                     String discoParaRemover = scanner.nextLine();
                     catalogo.removerDisco(discoParaRemover);
                     break;
 
-                case 7:
+                case 8:
                     System.out.print("Digite o nome do artista a ser editado: ");
                     String artistaParaEditar = scanner.nextLine();
                     Artista artistaEdicao = catalogo.acharArtista(artistaParaEditar);
@@ -117,17 +133,17 @@ public class Main {
                     }
                     break;
 
-                case 8:
+                case 9:
                     System.out.print("Digite o nome do artista a ser removido: ");
                     String artistaParaRemover = scanner.nextLine();
                     catalogo.removerArtista(artistaParaRemover);
                     break;
 
-                case 9:
+                case 10:
                     System.out.println("Todos os artistas: ");
                     catalogo.mostrarArtistas();
                     break;
-                case 10:
+                case 11:
                     executando = false;
                     System.out.println("Encerrando o programa...");
                     break;

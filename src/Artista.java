@@ -3,15 +3,15 @@ import java.util.Collections;
 import java.util.List;
 
 public class Artista {
-    protected String nome;
-    protected String generoMusical;
-    protected List<Disco> discos;
+    private String nome;
+    private String generoMusical;
+    private List<Disco> discos;
 
 
     public Artista(String nome, String generoMusical) {
         this.nome = nome;
         this.generoMusical = generoMusical;
-        this.discos = new ArrayList<>(); // Inicializando a lista de discos
+        this.discos = new ArrayList<>();
     }
 
 

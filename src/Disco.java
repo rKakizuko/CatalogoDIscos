@@ -2,11 +2,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Disco {
-    protected String nome;
-    protected int anoDeLancamento;
-    protected int numeroDeFaixas;
-    protected Artista artista;
-    protected List<String> faixas = new ArrayList<>();
+    private String nome;
+    private int anoDeLancamento;
+    private int numeroDeFaixas;
+    private Artista artista;
+    private List<String> faixas = new ArrayList<>();
+
+    public Disco() {
+    }
 
     public Disco(String nome, int anoDeLancamento, Artista artista) {
         this.nome = nome;
@@ -59,7 +62,7 @@ public class Disco {
         return "\n" +
                 "\nDisco: " + nome + "\n" +
                 "Ano de Lançamento: " + anoDeLancamento +
-                "\nArtista: " + artista.getNome() + // Obtém o nome do artista
+                "\nArtista: " + artista.getNome() +
                 "\nNúmero de faixas: " + numeroDeFaixas +
                 "\nFaixas: " + faixas +
                 "\n";
