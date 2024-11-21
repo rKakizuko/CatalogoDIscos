@@ -46,14 +46,6 @@ public class Artista {
     }
 
 
-    public void removerDisco(Disco disco) {
-        if (discos.remove(disco)) {
-            System.out.println("Disco \"" + disco.getNome() + "\" removido do artista " + nome + ".");
-        } else {
-            System.out.println("O disco \"" + disco.getNome() + "\" não está associado ao artista " + nome + "\".");
-        }
-    }
-
 
     public List<Disco> getDiscos() {
         return Collections.unmodifiableList(discos);
